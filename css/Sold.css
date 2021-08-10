@@ -1,0 +1,57 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+soldMain {
+    border: #0C0C0C 1px solid;
+    float: left;
+}
+
+#uname{
+    width: 100px;
+}
+
+#age{
+    width: 100px;
+    margin-left: 150px;
+}
+
+#sexdiv{
+    width: 200px;
+    margin-top: 20px;
+}
+
+#originate{
+    width: 100px;
+    margin-left: 255px;
+    margin-top: -20px;
+    float: left;
+}
+
+#uid{
+    width: 200px;
+    float: left;
+}
+
+#phone{
+    width: 150px;
+    margin-left: 50px;
+    float: left;
+}
+
+#address{
+    float: left;
+    width: 400px;
+}
+
+#amount{
+    float: left;
+    width: 100px;
+}
+
+#cards{
+    float: left;
+    margin-left: 150px;
+    width: 150px;
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="mapper.ScoreMapper"
+            prefHeight="400.0" prefWidth="600.0">
+    <mapper namespace="com.cykj.mapper.ScoreMapper">
+        <insert id="checkLogin" resultType="cykj.bean.ScoreMapper">
+            insert into Score where (scoreId  studentId examId score stateId)
+            values(#{examId} #{studentId}#{examId}#{score}#{stateId});
+        </insert>
+    </mapper>
+</AnchorPane>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd"><!-- 3是MyBatis的版本 -->
+
+<mapper namespace="com.cykj.mapper.StudentMapper">
+    <insert id="checkLogin" resultType="com.cykj.bean.StudentBean">
+        insert into Student where (studentId  aNumber IDCard sName sSex sAge)values(#{studentId} #{aNumber} #{IDCard} #{sName}#{sSex}#{sAge});
+    </insert>
+</mapper>

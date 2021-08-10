@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>一卡通后台用户登陆</title>
+
+	<link rel="stylesheet" type="text/css" href="../css/login.css">
+
+</head>
+<body>
+
+
+<div class="wrapper">
+
+	<div class="container" id="mainDiv">
+		<h1>Welcome</h1>
+		<form class="form" action="../LoginServlet" method="post" >
+			<input type="text" placeholder="用户名" name="uname" id="uname" onblur="unameNull()">
+			<p id="unameNull" style="font-size: 20px; display: none">账号不能为空</p>
+			<input type="password" placeholder="密码" name="pwd" id="pwd" onblur="pwdNull()">
+			<p id="pwdNull" style="font-size: 20px; display: none">密码不能为空</p>
+			<input type="button" id="code" onClick="change()">
+			<input type="text" class="codeInput" placeholder="请输入验证码" onblur="verification(this);" onfocus="cadeFocus()">
+			<p id="codeErr" style="font-size: 20px; display: none">验证码错误</p>
+			<button type="button" id="login-button">登录</button>
+		</form>
+	</div>
+	
+	<ul class="bg-bubbles">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	
+</div>
+
+</body>
+</html>
+
+<script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#mainDiv").fadeIn(1000);
+		$('#login-button').click(function(event){
+			if(!reg.test($(".codeInput").val())){
+				$("#codeErr").show();
+				return;
+			}
+			if(reg.test($("#uname").val())){
+				if (reg.test($("#pwd").val())){
+					$('form').fadeOut(500);
+					$('.wrapper').addClass('form-success');
+					setTimeout(function(){//两秒后跳转
+						$('form').submit();
+					},2000);
+				} else {
+					$("#pwdNull").fadeIn(500);
+				}
+			} else {
+				$("#unameNull").fadeIn(500);
+			}
+
+		});
+
+		change();
+	});
+
+	//验证码
+	function change() {
+		code=$("#code");
+		// 验证码组成库
+		var arrays = ['1','2','3','4','5','6','7','8','9','0',
+				'a','b','c','d','e','f','g','h','i','j',
+				'k','l','m','n','o','p','q','r','s','t',
+				'u','v','w','x','y','z',
+				'A','B','C','D','E','F','G','H','I','J',
+				'K','L','M','N','O','P','Q','R','S','T',
+				'U','V','W','X','Y','Z'];
+		codes='';// 重新初始化验证码
+		for(var i = 0; i<4; i++){
+			// 随机获取一个数组的下标
+			var r = parseInt(Math.random()*arrays.length);
+			codes += arrays[r];
+		}
+		// 验证码添加到input里
+		code.val(codes.toUpperCase());
+	}
+
+	function verification(input){
+		var str = input.value.toUpperCase();
+		var code = $("#code").val();
+		if(str != code){
+			$("#codeErr").show();
+		}
+	}
+
+	function cadeFocus(){
+		$("#codeErr").hide();
+	}
+
+	var reg = /\S/;
+	function unameNull(){
+		if(!reg.test($("#uname").val())){
+			$("#unameNull").fadeIn(500);
+		}
+	}
+
+	function pwdNull(){
+		if(!reg.test($("#pwd").val())){
+			$("#pwdNull").fadeIn(500);
+		}
+	}
+
+
+</script>

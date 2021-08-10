@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="mapper.QuetionMapper"
+            prefHeight="400.0" prefWidth="600.0">
+    <mapper namespace="com.cykj.mapper.QuetionMapper">
+        <select id="checkLogin" resultType="cykj.bean.QuetionBean">
+            select * from Question where (examId qNumber qType qSystem optionA optionB optionC optionD qScore qAnswer)
+            values(#{examId} #{qNumber} #{qType}#{qSystem}#{optionA}#{optionB}#{optionC}#{optionD}#{qScore}#{qAnswer});
+        </select>
+    </mapper>
+</AnchorPane>
